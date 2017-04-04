@@ -10,6 +10,7 @@ include 'konekcija.php';
 
 if(isset($_GET['brind'])){
     $brIndeksa = $_GET['brind'];
+    $brIndeksa = preg_replace('/\s+/', '', $brIndeksa);
     Student::obrisiStudenta($brIndeksa);
 }
-header('Location: studenti.php');
+header('Location: /studenti');

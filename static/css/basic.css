@@ -1,0 +1,5 @@
+html{
+    background: url("static?type=img&name=fon.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -127,7 +127,33 @@ class Student
 
     //omoguciti da se brise i po drugim parametrima u zavisnosti od duzine niza, za sada - good enough
     static function obrisiStudenta($brIndeksa){
+        echo 'Brind u obrisi:' . $brIndeksa;
         delete('student', 'br_indeksa', '\'' . $brIndeksa . '\'');
+    }
+
+    static function pronadjiStudente($params){
+        $studenti = array();
+        $paramStr = '';
+        if($params['brIndeksa']){
+            $paramStr = 'br_indeksa = ' . '\'' . $params['brIndeksa'] . '\'';
+        }
+        if($params['ime']){
+            if($params['brIndeksa'])
+                $paramStr = $paramStr . ' AND';
+            $paramStr = $paramStr . ' ime = ' . '\'' . $params['ime'] . '\'';
+        }
+        if($params['prezime']){
+            if($params['brIndeksa'] || $params['ime']){
+                $paramStr = $paramStr . ' AND';
+            }
+            $paramStr = 'prezime = ' . '\'' . $params['prezime'] . '\'';
+        }
+        $resultSet = select('student', '*', $paramStr);
+        foreach ($resultSet as $row) {
+            $studenti[] = new Student($row['br_indeksa'], $row['ime'], $row['prezime']);
+        }
+
+        return $studenti;
     }
 
 }

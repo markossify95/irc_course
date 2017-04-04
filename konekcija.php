@@ -70,10 +70,11 @@ function update($tableName, $columns, $attrs, $condition, $param){
         $query = $query . $col . ' = ' . $attrs[$i++] . ', ';
     }
     $query = rtrim($query, ", ");
-    $query = $query . ' WHERE ' . $condition . ' = ' . preg_replace('/\s+/', '', $param);
+    //$query = $query . ' WHERE ' . $condition . ' = ' . preg_replace('/\s+/', '', $param);
+    $query = $query . ' WHERE ' . $condition . ' = ' . $param;
 
     //test
-    echo $query;
+    //echo 'Upit je: ' . $query;
     $connection = otvoriKonekciju();
     $stmt = $connection->prepare($query);
     $stmt->execute(); // proveriti uspesnost izvrsenja!

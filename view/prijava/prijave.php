@@ -1,7 +1,7 @@
 <?php $title = 'Prijave Ispita';
 ob_start();
 ?>
-<h1>Spisak studenata</h1>
+<h1>Spisak prijava</h1>
 <table>
     <thead>
     <td>Broj prijave</td>
@@ -12,7 +12,6 @@ ob_start();
     </thead>
     <tbody>
     <?php
-    /** @var $student Student */
     foreach ($prijave as $prijava) {
         ?>
         <tr>
@@ -29,7 +28,7 @@ ob_start();
 
     </tbody>
 </table>
-<button name="btndodaj" onclick="window.location.replace('unosPrijave.php');">Dodaj Prijavu!</button>
+<button name="btndodaj" onclick="window.location.replace('/prijave/unos');">Dodaj Prijavu!</button>
 <script type="text/javascript">
     function obrisi(id)
     {
